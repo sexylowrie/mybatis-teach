@@ -130,3 +130,4 @@ generator.generate(null);
 </javaClientGenerator>
 ```
 
+[本文章参考MyBatis-Generator官网](http://www.mybatis.org/generator/index.html)
