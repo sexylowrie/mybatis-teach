@@ -116,7 +116,8 @@ generator.generate(null);
 示例如下：
 ```
 <!-- xml保存地址 targetPackage：目标包结构，targetProject：目标路径-->
-<sqlMapGenerator targetPackage="xin.sunce.mybatis.dao"          targetProject="src/main/resources">
+<sqlMapGenerator targetPackage="xin.sunce.mybatis.dao"          
+    targetProject="src/main/resources">
             <property name="enableSubPackages" value="true" />
 </sqlMapGenerator>
 ```
@@ -125,7 +126,8 @@ generator.generate(null);
     * 必填参数：type，targetPackage，targetProject
 ```
 <!-- dao保存地址 -->
-<javaClientGenerator type="XMLMAPPER" targetPackage="xin.sunce.mybatis.dao"  targetProject="src/main/java">
+<javaClientGenerator type="XMLMAPPER" targetPackage="xin.sunce.mybatis.dao"  
+    targetProject="src/main/java">
     <property name="enableSubPackages" value="true" />
 </javaClientGenerator>
 ```
