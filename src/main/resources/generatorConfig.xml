@@ -29,6 +29,7 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
+        <!-- 需要生成的表名称 -->
         <table  tableName="customer" mapperName="CustomerDao" ></table>
 
     </context>
