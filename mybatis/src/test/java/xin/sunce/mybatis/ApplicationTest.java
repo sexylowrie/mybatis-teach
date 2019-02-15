@@ -57,6 +57,17 @@ public class ApplicationTest {
     }
 
     @Test
+    public void testOriginQuery() {
+        SqlSession sqlSession = sessionFactory.openSession();
+        try {
+            Customer customer = (Customer) sqlSession.selectOne("xin.sunce.mybatis.dao.CustomerDao.selectByPrimaryKey", 1L);
+            LOGGER.info("query table Customer result: " + customer.toString());
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    @Test
     public void testUpdate() {
         SqlSession sqlSession = sessionFactory.openSession();
         try {
