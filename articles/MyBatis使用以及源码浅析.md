@@ -573,6 +573,6 @@ public class MapperProxyFactory<T> {
 ```
 
 
-我们用一张流程图来总结整个流程
+通过对源码的分析认识，我们用一张流程图来总结整个流程
 
 ![流程图.png](../images/流程图.png)
