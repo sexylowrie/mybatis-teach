@@ -107,7 +107,7 @@ try {
 </mapper>
 ```
 
-当然，映射的SQL语句也是不应定必须通过XML文件来完成的，也是可以通过注解来实现的
+当然，映射的SQL语句也是不一定必须通过XML文件来完成的，也是可以通过注解来实现的
 ```
 package org.mybatis.example;
 public interface BlogMapper {
