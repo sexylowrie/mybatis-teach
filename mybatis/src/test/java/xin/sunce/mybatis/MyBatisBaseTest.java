@@ -5,6 +5,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import xin.sunce.mybatis.dao.CustomerDao;
@@ -12,13 +13,12 @@ import xin.sunce.mybatis.entity.Customer;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Logger;
 
-public class ApplicationTest {
+public class MyBatisBaseTest {
 
     private SqlSessionFactory sessionFactory;
 
-    private Logger LOGGER = Logger.getLogger(ApplicationTest.class.getName());
+    private Logger LOGGER = Logger.getLogger(MyBatisBaseTest.class.getName());
 
     @Before
     public void getSqlSessionFactory() throws IOException {

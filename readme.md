@@ -5,3 +5,5 @@
 [使用MyBatis插件生成代码](./articles/使用MyBatis插件生成代码.md)
 
 [MyBatis使用以及源码浅析](./articles/MyBatis使用以及源码浅析.md)
+
+[MyBatis缓存的使用以源码分析](./articles/MyBatis缓存的使用以源码分析.md)

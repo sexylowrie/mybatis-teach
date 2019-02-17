@@ -18,7 +18,8 @@ public class Application {
     public static void main(String[] args) throws Exception {
         List<String> warnings = new ArrayList<>();
         boolean overwrite = true;
-        File configFile = new File("src/main/resources/generatorConfig.xml");
+        File configFile = new File("mybatis/src/main/resources/generatorConfig.xml");
+        System.out.println(configFile.getAbsolutePath());
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);

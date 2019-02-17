@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xin.sunce.mybatis.dao.ClassDao">
+    <!--<cache/>-->
+    <cache-ref namespace="xin.sunce.mybatis.dao.StudentDao"/>
+    <update id="updateClassName">
+        UPDATE class
+        SET name = #{name}
+        WHERE id = #{id}
+    </update>
+</mapper>

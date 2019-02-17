@@ -14,23 +14,25 @@
         </jdbcConnection>
 
         <!-- entity保存地址 -->
-        <javaModelGenerator targetPackage="xin.sunce.mybatis.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="xin.sunce.mybatis.entity" targetProject="mybatis/src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- xml保存地址 -->
-        <sqlMapGenerator targetPackage="xin.sunce.mybatis.dao"  targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="xin.sunce.mybatis.dao"  targetProject="mybatis/src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- dao保存地址 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="xin.sunce.mybatis.dao"  targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="xin.sunce.mybatis.dao"  targetProject="mybatis/src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
         <!-- 需要生成的表名称 -->
-        <table  tableName="customer" mapperName="CustomerDao" ></table>
+        <!--<table  tableName="customer" mapperName="CustomerDao" ></table>-->
+        <!--<table  tableName="student" mapperName="StudentDao" ></table>-->
+        <table  tableName="class" mapperName="ClassDao" ></table>
 
     </context>
 </generatorConfiguration>
