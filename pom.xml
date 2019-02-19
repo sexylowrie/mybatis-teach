@@ -10,6 +10,7 @@
     <version>1.0.0</version>
     <modules>
         <module>mybatis</module>
+        <module>spring-mybatis</module>
     </modules>
 
     <properties>
