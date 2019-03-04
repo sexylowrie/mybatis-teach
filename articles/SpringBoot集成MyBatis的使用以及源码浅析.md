@@ -152,7 +152,7 @@ public class CustomerDaoTest {
 </dependencies>
 ```
 
-我们发现mybatis-spring-boot-starter实质上就是一个pom文件，其中引入了spring-boot-starter，spring-boot-starter-jdbc，mybatis，mybatis-spring，mybatis-spring-boot-autoconfigure这些jar包，我们发现相较于spring整合mybatis多了mybatis-spring-boot-autoconfigure等jar包。我们稍后来看看autoconfigure到底做了什么？
+我们发现mybatis-spring-boot-starter实质上就是一个pom文件，其中引入了spring-boot-starter，spring-boot-starter-jdbc，mybatis，mybatis-spring，mybatis-spring-boot-autoconfigure这些jar包，我们发现相较于spring整合mybatis多了mybatis-spring-boot-autoconfigure等jar包。
 
 我们来看mybatis-spring-boot-autoconfigure的项目结构
 
@@ -187,7 +187,67 @@ public class MybatisAutoConfiguration {
 }
 ```
 
-以上便是MyBatis在springboot中自动配置的核心，而springboot是如何实现自动配置的，我们会在后面的文章中仔细的挖掘。
+我们发现MybatisAutoConfiguration实现了对SqlSessionFactory，SqlSessionTemplate的默认配置，在缺少其相关实例时，会自动创建；而SqlSessionFactory，SqlSessionTemplate便是MyBatis的核心；
+
+SqlSessionFactory的配置过程
+
+```
+public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+    SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
+    //设置数据源
+    factory.setDataSource(dataSource);
+    factory.setVfs(SpringBootVFS.class);
+    if (StringUtils.hasText(this.properties.getConfigLocation())) {
+        factory.setConfigLocation(this.resourceLoader.getResource(this.properties.getConfigLocation()));
+    }
+    
+    org.apache.ibatis.session.Configuration configuration = this.properties.getConfiguration();
+    if (configuration == null && !StringUtils.hasText(this.properties.getConfigLocation())) {
+        configuration = new org.apache.ibatis.session.Configuration();
+    }
+
+    if (configuration != null && !CollectionUtils.isEmpty(this.configurationCustomizers)) {
+        Iterator var4 = this.configurationCustomizers.iterator();
+
+        while(var4.hasNext()) {
+            ConfigurationCustomizer customizer = (ConfigurationCustomizer)var4.next();
+            customizer.customize(configuration);
+        }
+    }
+    //设置configuration
+    factory.setConfiguration(configuration);
+    if (this.properties.getConfigurationProperties() != null) {
+        factory.setConfigurationProperties(this.properties.getConfigurationProperties());
+    }
+
+    if (!ObjectUtils.isEmpty(this.interceptors)) {
+        factory.setPlugins(this.interceptors);
+    }
+
+    if (this.databaseIdProvider != null) {
+        factory.setDatabaseIdProvider(this.databaseIdProvider);
+    }
+
+    if (StringUtils.hasLength(this.properties.getTypeAliasesPackage())) {
+        factory.setTypeAliasesPackage(this.properties.getTypeAliasesPackage());
+    }
+
+    if (StringUtils.hasLength(this.properties.getTypeHandlersPackage())) {
+        factory.setTypeHandlersPackage(this.properties.getTypeHandlersPackage());
+    }
+
+    if (!ObjectUtils.isEmpty(this.properties.resolveMapperLocations())) {
+        factory.setMapperLocations(this.properties.resolveMapperLocations());
+    }
+
+    return factory.getObject();
+}
+```
+我们发现SqlSessionFactory的创建过程类似于Spring整合MyBatis时，利用SqlSessionFactoryBean来构建，期间完成了设置数据源，设置Configuration等重要的操作，最终通过factory.getObject()来获取SqlSessionFactory。
+
+
+至于springboot是如何实现自动配置的，我们会在后面的文章中仔细的挖掘。
+
 
 
 
