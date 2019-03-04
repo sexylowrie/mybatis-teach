@@ -1,8 +1,85 @@
 ### Spring集成MyBatis的使用以及源码浅析
 
+演示环境
+
+* mysql
+* 构建工具maven
+
 #### 使用Spring集成MyBatis
 
-新建Spring的XML配置文件applicationContext.xml
+我们事先来看看pom文件
+```
+<dependencies>
+    <!-- spring context -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>5.1.3.RELEASE</version>
+    </dependency>
+    <!-- spring事务管理-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>5.0.10.RELEASE</version>
+    </dependency>
+    <!-- spring jdbc-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>5.0.10.RELEASE</version>
+    </dependency>
+    <!-- 阿里数据库连接池-->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>1.1.10</version>
+    </dependency>
+    <!-- mysql 相关驱动-->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.15</version>
+    </dependency>
+    <!-- mybatis -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.4.6</version>
+    </dependency>
+    <!-- mybatis-spring 适配-->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>1.3.2</version>
+    </dependency>
+    <!-- 日志 -->
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.17</version>
+    </dependency>
+    <!-- 单元测试 -->
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+
+我们需要
+spring帮我们依赖注入Bean,需要引入spring-context
+spring数据库连接,需要引入spring-jdbc
+spring管理实务,需要引入spring-tx
+mysql驱动,mysql-connector-java
+数据库连接池,druid
+mybatis持久层框架,mybatis
+mybatis的spring适配器,mybatis-spring
+日志框架,log4j
+单元测试,junit
+
+引入以上依赖jar包之后，我们新建Spring的XML配置文件applicationContext.xml
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>

@@ -9,3 +9,5 @@
 [MyBatis缓存的使用以源码分析](./articles/MyBatis缓存的使用以源码分析.md)
 
 [Spring集成MyBatis的使用以及源码浅析](./articles/Spring集成MyBatis的使用以及源码浅析.md)
+
+[SpringBoot集成MyBatis的使用以及源码浅析](./articles/SpringBoot集成MyBatis的使用以及源码浅析.md)
