@@ -30,9 +30,9 @@
         </javaClientGenerator>
 
         <!-- 需要生成的表名称 -->
-        <!--<table  tableName="customer" mapperName="CustomerDao" ></table>-->
+        <table  tableName="customer" mapperName="CustomerDao" ></table>
         <!--<table  tableName="student" mapperName="StudentDao" ></table>-->
-        <table  tableName="class" mapperName="ClassDao" ></table>
+        <!--<table  tableName="class" mapperName="ClassDao" ></table>-->
 
     </context>
 </generatorConfiguration>

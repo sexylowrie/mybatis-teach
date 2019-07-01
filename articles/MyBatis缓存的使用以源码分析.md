@@ -82,7 +82,7 @@ DEBUG [main] - Customer{id=1, optimistic=null, name='ce.sun', phone='null'}
 DEBUG [main] - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@1f59a598]
 DEBUG [main] - Returned connection 525968792 to pool.
 ```
-当我们将一级缓存的选线调整为STATEMENT时，发现三次都是从数据库取得结果。
+当我们将一级缓存的选项调整为STATEMENT时，发现三次都是从数据库取得结果。
 
 ##### 一级缓存实验二
 
@@ -610,7 +610,7 @@ public <E> List<E> query(MappedStatement ms, Object parameterObject, RowBounds r
     //获取初始化缓存
     Cache cache = ms.getCache();
     if (cache != null) {
-        //判断师傅要清除缓存
+        //判断是否要清除缓存
         this.flushCacheIfRequired(ms);
         if (ms.isUseCache() && resultHandler == null) {
             this.ensureNoOutParams(ms, boundSql);
