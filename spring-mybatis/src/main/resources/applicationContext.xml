@@ -41,13 +41,20 @@
         <!-- <property name="filters" value="stat" /> -->
         <property name="filters" value="mergeStat"/>
     </bean>
+
+    <!-- 配置本地缓存范围 -->
+    <bean name="configuration" class="org.apache.ibatis.session.Configuration">
+        <property name="localCacheScope" value="STATEMENT"/>
+    </bean>
     <!-- myBatis文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+        <property name="configuration" ref="configuration"/>
         <!-- 配置数据库表对应的java实体类 -->
         <property name="typeAliasesPackage" value="xin.sunce.mybatis.entity"/>
         <!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
         <property name="mapperLocations" value="classpath:/xin/sunce/mybatis/dao/*.xml"/>
+
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="xin.sunce.mybatis.dao"/>
